@@ -10,15 +10,16 @@ import Map from '../components/Map'
 const Layout = () => {
   const dispatch = useDispatch()
 
-
   useEffect(()=> {
-      dispatch (getHomesAction())
+      dispatch ( getHomesAction() )
   }, [])
   
   return (
     <div>
-      <h1>OpenDoor</h1>
-      <SearchBar />
+      <div className='md:w-2/3 m-auto pt-10 pb-5 flex justify-around'>
+        <h1 className='text-blue-700 font-bold text-lg py-auto'>OpenDoor</h1>
+        <SearchBar />
+      </div>
       <Map />
       <Houses />
 
