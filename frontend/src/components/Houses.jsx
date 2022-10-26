@@ -1,19 +1,34 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 import Filter from './Filter'
 import House from './House'
+import Offer from './Offer'
+import Pagination from './Pagination'
 
 const Houses = () => {
+  const search = useLocation().search
+  const page = new URLSearchParams(search).get('page') || 1
+
+  const [currentPage, setCurrentPage] = useState(page)
+  const [homesPerPage, setHomesPerPage] = useState(10)
 
   const homes = useSelector(state => state.homes.homesByStatus) // es un array
 
-  console.log(homes)
+  const indexOfLastHome = currentPage * homesPerPage
+  const indexOfFirstHome = indexOfLastHome - homesPerPage
+  const currentHomes = homes.slice(indexOfFirstHome, indexOfLastHome)
+
+  useEffect( () => {
+    setCurrentPage(page)
+  }, [page])
   
   return (
-    <div className='w-1/2'>
+    <div className='w-full px-5 md:w-1/2 '>
       <Filter />
       
-      {homes.map((home, index) => 
+      {currentHomes.map((home, index) => 
           <>
             <House
               key={home._id} 
@@ -27,10 +42,12 @@ const Houses = () => {
               locality={home.addressObject.locality}  
               stateCode={home.addressObject.stateCode}  
             />
-            {index===1 && <h1>Make your strongest offer</h1>}
+            {index===1 && <Offer />}
           </>
         
       )}
+
+      <Pagination homesPerPage={homesPerPage} totalHomes={homes.length} currentPage={currentPage} />
     </div>
   )
 }

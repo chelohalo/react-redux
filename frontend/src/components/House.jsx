@@ -1,15 +1,12 @@
 import React from 'react'
-import Carousel from './Carousel'
+import SliderComponent from './Carousel'
 
 const House = ({ images, price, bedroom, bathroom, squareFootage, streetNumber, route, locality, stateCode }) => {
 
   return (
-    <div className='flex m-5 h-48 rounded-lg shadow md:w-1/1 '>
-      {/* <Carousel images={images} /> */}
-      <img 
-        src={images[0]} 
-        className='w-1/2 rounded-lg object-contain object-left'/>
-      <div className='flex flex-col justify-center'>
+    <div className='flex m-5 h-48 rounded-lg shadow md:w-1/1 max-w-xl'>
+      <SliderComponent images={images}  className='m-0 p-0 overflow-hidden w-1/2 relative max-w-md'/>
+      <div className='flex flex-col justify-center pr-10'>
         <p className='p-2 font-bold'>$ {price} </p>
         <div className='p-2 flex flex-row text-sm'>
           <p className=''>{bedroom}bd</p>

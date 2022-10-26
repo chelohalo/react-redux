@@ -1,93 +1,58 @@
-import React from 'react'
-import { useState, useRef, useEffect } from 'react';
+/* eslint-disable jsx-a11y/img-redundant-alt */
+import React from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
 
-const Carousel = ({images}) => {
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+// import required modules
+import { Navigation } from "swiper";
+
+export default function SliderComponent({images}) {
     return (
-        <div className="carousel my-12 mx-auto">
-          {/* <h2 className="text-4xl leading-8 font-semibold mb-12 text-slate-700">
-            Our epic carousel
-          </h2>
-          <div className="relative overflow-hidden">
-            <div className="flex justify-between absolute top left w-full h-full">
-              <button
-                onClick={movePrev}
-                className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
-                disabled={isDisabled('prev')}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-20 -ml-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-                <span className="sr-only">Prev</span>
-              </button>
-              <button
-                onClick={moveNext}
-                className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
-                disabled={isDisabled('next')}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-20 -ml-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-                <span className="sr-only">Next</span>
-              </button>
-            </div>
-            <div
-              ref={carousel}
-              className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
+        <>
+            <Swiper
+                navigation={true}
+                modules={[Navigation]}
+                className='w-1/2'
+                // className="m-0 p-0 overflow-hidden w-1/2 relative"
             >
-              {images.map((resource, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="carousel-item text-center relative w-64 h-64 snap-start"
-                  >
-                    <a
-                      href={resource}
-                      className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
-                      style={{ backgroundImage: `url(${resource.imageUrl || ''})` }}
-                    >
-                      <img
-                        src={resource || ''}
-                        alt={resource}
-                        className="w-full aspect-square hidden"
-                      />
-                    </a>
-                    <a
-                      href={resource}
-                      className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
-                    >
-                      <h3 className="text-white py-6 px-3 mx-auto text-xl">
-                        {resource}
-                      </h3>
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
-          </div> */}
-        </div>
-      );
-}
+                <SwiperSlide>
+                    <img
+                        className="object-contain h-48 w-96"
+                        //className="object-contain object-center"
+                        src={images[0]}
+                        alt="image slide 1"
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img
+                        className="object-contain h-48 w-96"
+                        //className="object-contain object-center"
+                        src={images[1]}
+                        alt="image slide 2"
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img
+                        className="object-contain h-48 w-96"
+                        //className="object-contain object-center"
+                        src={images[2]}
+                        alt="image slide 3"
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img
+                        className="object-contain h-48 w-96"
+                        //className="object-contain object-center"
+                        src={images[3]}
+                        alt="image slide 3"
+                    />
+                </SwiperSlide>
 
-export default Carousel
+            </Swiper>
+        </>
+    );
+}

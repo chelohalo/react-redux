@@ -16,9 +16,9 @@ const Layout = () => {
   
   return (
     <div>
-      <div className='md:w-2/3 m-auto pt-10 pb-5 flex justify-around'>
-        <h1 className='text-blue-700 font-bold text-lg py-auto'>OpenDoor</h1>
-        <SearchBar />
+      <div className='flex flex-col md:w-2/3 m-auto pt-10 pb-5 md:flex-row justify-around'>
+        <h1 className='text-blue-700 font-bold text-2xl text-center mb-5'>OpenDoor</h1>
+        <SearchBar className=''/>
       </div>
       <div className='flex flex-col grow md:flex-row'>
         <Map />
