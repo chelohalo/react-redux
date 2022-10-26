@@ -50,12 +50,12 @@ const homesReducers = function (state = initialState, action) {
       case ORDER_RESULTS_BY_NEWEST:
         return {
           ...state,
-          homesByStatus: state.homesFiltered.sort((a,b) => b.yearBuilt - a.yearBuilt)
+          homesByStatus: [...state.homesFiltered.sort((a,b) => b.yearBuilt - a.yearBuilt)]
         }
       case ORDER_RESULTS_BY_OLDEST:
         return {
           ...state,
-          homesByStatus: state.homesFiltered.sort((a,b) => a.yearBuilt - b.yearBuilt)
+          homesByStatus: [...state.homesFiltered.sort((a,b) => a.yearBuilt - b.yearBuilt)]
         }
       case FILTER_RESULTS_BY_ACTIVE:
         return {

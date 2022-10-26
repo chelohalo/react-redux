@@ -20,8 +20,10 @@ const Layout = () => {
         <h1 className='text-blue-700 font-bold text-lg py-auto'>OpenDoor</h1>
         <SearchBar />
       </div>
-      <Map />
-      <Houses />
+      <div className='flex flex-col grow md:flex-row'>
+        <Map />
+        <Houses />
+      </div>
 
     </div>
   )
