@@ -25,7 +25,10 @@ const Houses = () => {
   }, [page])
   
   return (
-    <div className='w-full px-5 md:w-1/2 '>
+    <div className='w-full px-5 pt-5 md:w-1/2 '>
+      <h4 className='font-bold text-lg px-5'>Homes for sale in Tampa</h4>
+      <p className='px-5 py-2'>{homes.length} listings found</p>
+      
       <Filter />
       
       {currentHomes.map((home, index) => 
